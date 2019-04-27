@@ -65,8 +65,6 @@ mixin UserModel on ConnectedProductsModel {
       prefs.setString('token', userDetail['api_token']);
       prefs.setString('username', username);
       prefs.setString('userId', userDetail['candidateId']);
-      String token = prefs.getString('token');
-      String userID = prefs.getString('userId');
     } else {
       message = 'Something went wrong';
     }

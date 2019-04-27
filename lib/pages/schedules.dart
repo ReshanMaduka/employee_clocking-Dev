@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:scoped_model/scoped_model.dart';
 
 //import '../widgets/products/products.dart';
@@ -52,7 +51,7 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Color.fromRGBO(36, 33, 51,60.0),
+      backgroundColor: const Color(0xFF242133),
       body: _buildProductsList(),
     );
   }
