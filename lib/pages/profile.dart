@@ -24,26 +24,6 @@ class _ProfilePageState extends State<Profile> {
     super.initState();
   }
 
-  Widget _showLogo() {
-    return new Hero(
-      tag: 'hero',
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(.0, 0.20, 0.0, 0.0),
-        child: CircleAvatar(
-          backgroundColor: Colors.transparent,
-          backgroundImage: new AssetImage('assets/bg@300x.png'),
-          radius: 70.0,
-          child: CircleAvatar(
-            backgroundColor: Colors.transparent,
-            backgroundImage: new AssetImage('assets/test.png'),
-            radius: 45.0,
-          ),
-//          child: Image.asset('assets/test.png'),
-        ),
-      ),
-    );
-  }
-
   Widget _Details() {
     return new Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -179,37 +159,47 @@ class _ProfilePageState extends State<Profile> {
     );
   }
 
+  Widget _showLogo() {
+    return new Center(
+      child: new ResponsiveContainer(
+        heightPercent: 25.0,
+        widthPercent: 45.0,
+        child: Hero(
+          tag: 'hero',
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(.0, 0.20, 0.0, 0.0),
+            child: CircleAvatar(
+              backgroundColor: Colors.transparent,
+              backgroundImage: new AssetImage('assets/bg@300x.png'),
+              radius: 80.0,
+              child: CircleAvatar(
+                backgroundColor: Colors.transparent,
+                backgroundImage: new AssetImage('assets/test.png'),
+                radius: 60.0,
+              ),
+//          child: Image.asset('assets/test.png'),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildProductsList() {
     final double deviceWidth = MediaQuery.of(context).size.height;
     print(deviceWidth);
-    final double targetWidth = deviceWidth > 550.0 ? 500.0 : deviceWidth * 0.95;
     return new Center(
+        child: new Container(
       child: new ResponsiveContainer(
-        heightPercent: 50,
+        heightPercent: 45.0,
         widthPercent: MediaQuery.of(context).size.width,
-//        alignment: Alignment.bottomCenter,
         child: new Container(
           padding: EdgeInsets.only(top: 30.0, left: 30.0),
           child: _Details(),
           decoration: new BoxDecoration(
-//            gradient: LinearGradient(
-//              // Where the linear gradient begins and ends
-//              begin: Alignment.topCenter,
-//              end: Alignment.bottomCenter,
-//              // Add one stop for each color. Stops should increase from 0 to 1
-//              stops: [0.1, 0.5, 0.7, 0.8],
-//              colors: [
-//                // Colors are easy thanks to Flutter's Colors class.
-//                Color[400],
-//                Colors.deepPurple[500],
-//                Colors.accents<0xFF2D2A3F>[600],
-//
-//              ],
-//            ),
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-//              end: Alignment(0.8, 0.0), // 10% of the width, so there are ten blinds.
               colors: [
                 const Color(0xFF545172),
                 const Color(0xFF545172),
@@ -227,10 +217,10 @@ class _ProfilePageState extends State<Profile> {
                 topLeft: const Radius.circular(40.0),
                 topRight: const Radius.circular(40.0)),
           ),
-          height: 350.0,
+//          height: 350.0,
         ),
       ),
-    );
+    ));
   }
 
   @override
@@ -249,38 +239,30 @@ class _ProfilePageState extends State<Profile> {
           ),
         ],
       ),
-      body: Container(
-//        padding: EdgeInsets.all(30.0),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Container(
-//              width: targetWidth,
-              child: Form(
-                child: Column(
-                  children: <Widget>[
-                    _showLogo(),
-                    SizedBox(
-                      height: 2.0,
-                    ),
-                    new Text('Reshan Maduka'),
-                    new Text(
-                      'test tetet etet',
-                      style: TextStyle(color: Colors.deepPurple[200]),
-                    ),
-//                    new T
-                    SizedBox(
-                      height: 40.0,
-                    ),
-                    _buildProductsList()
-                  ],
-                ),
-              ),
+      body: new Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          _showLogo(),
+          new Center(
+            child: Text('Reshan Maduka'),
+          ),
+          new Center(
+            child: Text(
+              'test tetet etet',
+              style: TextStyle(color: Colors.deepPurple[200]),
             ),
           ),
-        ),
+//          new TextField(),
+          Expanded(
+            child: new Container(),
+          ),
+          Column(
+            children: <Widget>[_buildProductsList()],
+          )
+        ],
       ),
     );
   }
 }
-
-//
