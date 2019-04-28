@@ -10,8 +10,9 @@ class ProductsAdminPage extends StatelessWidget {
 
   Widget customBottomNavigationBar(BuildContext context){
 //    double myHeight =100.0;//Your height HERE
+
     return SizedBox(
-//      height: myHeight,
+      height: 50,
       width: MediaQuery.of(context).size.width,
       child: new Material(
         color: const Color(0xFF37334D),

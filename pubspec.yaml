@@ -32,6 +32,8 @@ dependencies:
       git:
         url: git://github.com/Eimji/flutter_google_map_view.git
   location: "^2.0.0"
+  responsive_container: "^0.0.1"
+
 
 dev_dependencies:
   flutter_test:
