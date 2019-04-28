@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_container/responsive_container.dart';
-
 import 'package:scoped_model/scoped_model.dart';
 
 //import '../widgets/products/products.dart';
@@ -185,11 +184,11 @@ class _ProfilePageState extends State<Profile> {
     print(deviceWidth);
     final double targetWidth = deviceWidth > 550.0 ? 500.0 : deviceWidth * 0.95;
     return new Center(
-      child: ResponsiveContainer(
-        heightPercent: 50.0, //value percent of screen total height
+      child: new ResponsiveContainer(
+        heightPercent: 50,
         widthPercent: MediaQuery.of(context).size.width,
+//        alignment: Alignment.bottomCenter,
         child: new Container(
-          alignment: Alignment.bottomCenter,
           padding: EdgeInsets.only(top: 30.0, left: 30.0),
           child: _Details(),
           decoration: new BoxDecoration(
@@ -221,7 +220,6 @@ class _ProfilePageState extends State<Profile> {
                 const Color(0xFF464360),
                 const Color(0xFF464360),
                 const Color(0xFF464360),
-
               ], // whitish to gray
 //              tileMode: TileMode.mirror, // repeats the gradient over the canvas
             ),
@@ -229,63 +227,11 @@ class _ProfilePageState extends State<Profile> {
                 topLeft: const Radius.circular(40.0),
                 topRight: const Radius.circular(40.0)),
           ),
-          height: 300.0,
+          height: 350.0,
         ),
       ),
     );
   }
-//  Widget _buildProductsList() {
-//    final double deviceWidth = MediaQuery.of(context).size.height;
-//    print(deviceWidth);
-//    final double targetWidth = deviceWidth > 550.0 ? 500.0 : deviceWidth * 0.95;
-//    return new Center(
-//      child: new Container(
-//        alignment: Alignment.bottomCenter,
-//        child: new Container(
-//          padding: EdgeInsets.only(top: 30.0, left: 30.0),
-//          child: _Details(),
-//          decoration: new BoxDecoration(
-////            gradient: LinearGradient(
-////              // Where the linear gradient begins and ends
-////              begin: Alignment.topCenter,
-////              end: Alignment.bottomCenter,
-////              // Add one stop for each color. Stops should increase from 0 to 1
-////              stops: [0.1, 0.5, 0.7, 0.8],
-////              colors: [
-////                // Colors are easy thanks to Flutter's Colors class.
-////                Color[400],
-////                Colors.deepPurple[500],
-////                Colors.accents<0xFF2D2A3F>[600],
-////
-////              ],
-////            ),
-//            gradient: LinearGradient(
-//              begin: Alignment.topCenter,
-//              end: Alignment.bottomCenter,
-////              end: Alignment(0.8, 0.0), // 10% of the width, so there are ten blinds.
-//              colors: [
-//                const Color(0xFF545172),
-//                const Color(0xFF545172),
-//                const Color(0xFF545172),
-//                const Color(0xFF545172),
-//                const Color(0xFF545172),
-//                const Color(0xFF545172),
-//                const Color(0xFF464360),
-//                const Color(0xFF464360),
-//                const Color(0xFF464360),
-//
-//              ], // whitish to gray
-////              tileMode: TileMode.mirror, // repeats the gradient over the canvas
-//            ),
-//            borderRadius: new BorderRadius.only(
-//                topLeft: const Radius.circular(40.0),
-//                topRight: const Radius.circular(40.0)),
-//          ),
-//          height: 300.0,
-//        ),
-//      ),
-//    );
-//  }
 
   @override
   Widget build(BuildContext context) {
@@ -303,7 +249,36 @@ class _ProfilePageState extends State<Profile> {
           ),
         ],
       ),
-      body: _buildProductsList()
+      body: Container(
+//        padding: EdgeInsets.all(30.0),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Container(
+//              width: targetWidth,
+              child: Form(
+                child: Column(
+                  children: <Widget>[
+                    _showLogo(),
+                    SizedBox(
+                      height: 2.0,
+                    ),
+                    new Text('Reshan Maduka'),
+                    new Text(
+                      'test tetet etet',
+                      style: TextStyle(color: Colors.deepPurple[200]),
+                    ),
+//                    new T
+                    SizedBox(
+                      height: 40.0,
+                    ),
+                    _buildProductsList()
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
